@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ page import="com.javaex.vo.GuestBookVo" %>
+
 <%
-	int delNo = Integer.parseInt(request.getParameter("no"));
+   int delNo = Integer.parseInt(request.getParameter("del_no"));
 %>
 <!DOCTYPE html>
 <html>

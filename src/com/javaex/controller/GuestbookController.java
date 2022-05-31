@@ -62,9 +62,7 @@ public class GuestbookController extends HttpServlet {
 			
 		} else if("deleteForm".equals(action)) {
 			
-			int delNo = Integer.parseInt(request.getParameter("del_no"));
-			
-			WebUtil.forward(request, response, "/WEB-INF/deleteForm.jsp?no="+delNo);
+			WebUtil.forward(request, response, "/WEB-INF/deleteForm.jsp");
 			
 			
 		} else if("delete".equals(action)) {
@@ -84,11 +82,12 @@ public class GuestbookController extends HttpServlet {
 			}
 			
 			//리다이렉트 list
-			WebUtil.redirect(request, response, "./gbc?action=list");
+			WebUtil.redirect(request, response, "/guestbook2/gbc?action=list");
 			
 			
 		} else {
 			System.out.println("action 파라미터 없음");
+			WebUtil.redirect(request, response, "/guestbook2/gbc?action=list");
 		}
 		
 		

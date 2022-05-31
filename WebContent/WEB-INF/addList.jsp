@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.javaex.dao.GuestBookDao" %>
 <%@ page import="com.javaex.vo.GuestBookVo" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Date" %>
@@ -61,10 +60,7 @@
 				<td width="150px"><%=g.getName() %></td>
 				<td width="300px"><%=g.getDate() %></td>
 				<td>
-					<form action="./gbc" method="get">
-						<input type="hidden" name="action" value="deleteForm">
-						<button type="submit" name="del_no" value=<%=g.getNo() %>>삭제</button>
-					</form>
+					<a href="/guestbook2/gbc?action=deleteForm&del_no=<%=g.getNo()%>">삭제</a>
 				</td>
 			</tr>
 			<tr>
