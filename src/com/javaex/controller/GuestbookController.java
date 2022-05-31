@@ -65,7 +65,12 @@ public class GuestbookController extends HttpServlet {
 			WebUtil.forward(request, response, "/WEB-INF/deleteForm.jsp");
 			
 			
-		} else if("delete".equals(action)) {
+		} else if("deleteForm".equals(action)) {
+			System.out.println("ㅇㅅㅇ");
+		}
+		
+		
+		else if("delete".equals(action)) {
 			//파라미터 가져오기
 			int delNo = Integer.parseInt(request.getParameter("del_no"));
 			String delPw = request.getParameter("del_pw");
