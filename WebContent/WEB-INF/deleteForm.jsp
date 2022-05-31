@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%
-	int delNo = Integer.parseInt(request.getParameter("del_no"));
+	int delNo = Integer.parseInt(request.getParameter("no"));
 %>
 <!DOCTYPE html>
 <html>
