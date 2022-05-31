@@ -72,14 +72,8 @@ public class GuestbookController extends HttpServlet {
 			
 			
 			GuestBookDao gbDao = new GuestBookDao();
-			GuestBookVo guest = gbDao.getGuest(delNo);
 			
-			//입력한 비밀번호와 같으면 삭제
-			if(guest.getPassword().equals(delPw)) {
-				gbDao.guestDelete(delNo);
-			} else {
-				System.out.println("비밀번호가 틀렸습니다.");
-			}
+			gbDao.guestDelete(delNo, delPw);
 			
 			//리다이렉트 list
 			WebUtil.redirect(request, response, "/guestbook2/gbc?action=list");

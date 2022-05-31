@@ -177,7 +177,7 @@ public class GuestBookDao {
 	
 	
 	//Guest 삭제
-	public void guestDelete(int delNo) {
+	public void guestDelete(int delNo, String delPw) {
 		getConnection();
 		
 		try {
@@ -186,9 +186,11 @@ public class GuestBookDao {
 			String query = "";
 			query += " delete guestbook ";
 			query += " where no = ? ";
+			query += " and password = ? ";
 
 			pstmt = conn.prepareStatement(query); // 쿼리로 만들기
 			pstmt.setInt(1, delNo);
+			pstmt.setString(2, delPw);
 
 			int count = pstmt.executeUpdate();
 
