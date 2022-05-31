@@ -60,7 +60,7 @@
 				<td width="150px"><%=g.getName() %></td>
 				<td width="300px"><%=g.getDate() %></td>
 				<td>
-					<a href="/guestbook2/gbc?action=deleteForm&del_no=<%=g.getNo()%>">삭제</a>
+					<a href="./gbc?action=deleteForm&del_no=<%=g.getNo()%>">삭제</a>
 				</td>
 			</tr>
 			<tr>
