@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%@ page import="com.javaex.vo.GuestBookVo" %>
 
-<%
-   int delNo = Integer.parseInt(request.getParameter("del_no"));
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +11,7 @@
 <body>
 	<form action="./gbc?action=delete" method="get">
 		<input type="hidden" name="action" value="delete">
-		<input type="hidden" name="del_no" value="<%=delNo%>">
+		<input type="hidden" name="del_no" value="${param.del_no }">
 		비밀번호  <input type="password" name="del_pw" value="">
 		<button type="submit">확인</button>
 		<br>

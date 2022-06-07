@@ -1,17 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="com.javaex.vo.GuestBookVo" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-    
-<%
-   	List<GuestBookVo> gbList = (List<GuestBookVo>) request.getAttribute("gbList");
-   	
-   	Date date = new Date();
-   	SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-   	String regDate = simpleDate.format(date);
-%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<!-- 현재 날짜와 시간 -->
+<c:set var="now" value="<%=new java.util.Date() %>" />
+<c:set var="regDate"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd hh:mm:ss" /></c:set>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +33,7 @@
 			</tr>
 			<tr>
 				<td colspan="4">
-					<input type="hidden" name="reg_date" value="<%=regDate%>">
+					<input type="hidden" name="reg_date" value="${regDate }">
 					<input type="hidden" name="action" value="write">
 					<button type="submit">확인</button>
 				</td>
@@ -51,27 +45,25 @@
 	
 	
 	<!-- 글 출력 -->
-	<%
-	for(GuestBookVo g : gbList) {
-	%>
+	<c:forEach items="${gbList }" var="gbVo">
 		<table border="1">
 			<tr>
-				<td width="50px"><%=g.getNo() %></td>
-				<td width="150px"><%=g.getName() %></td>
-				<td width="300px"><%=g.getDate() %></td>
+				<td width="50px">${gbVo.no }</td>
+				<td width="150px">${gbVo.name }</td>
+				<td width="300px">${gbVo.date }</td>
 				<td>
-					<a href="./gbc?action=deleteForm&del_no=<%=g.getNo()%>">삭제</a>
+					<a href="./gbc?action=deleteForm&del_no=${gbVo.no }">삭제</a>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="4" width="590px">
 					<p>
-						<%=g.getContent() %>
+						${gbVo.content }
 					</p>
 				</td>
 			</tr>
 		</table>
 		<br>
-	<% } %>
+	</c:forEach>
 </body>
 </html>
